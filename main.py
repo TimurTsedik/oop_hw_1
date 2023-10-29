@@ -167,9 +167,6 @@ good_student.rate_lecture(good_lecturer, 'Advanced Python', 8)
 good_student.rate_lecture(good_lecturer, 'Advanced Python', 10)
 good_student.rate_lecture(good_lecturer, 'Advanced Python', 7)
 
-
-
-
 print(cool_reviewer)
 print(cool_lecturer)
 print(best_student.avg_grade())
