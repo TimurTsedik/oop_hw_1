@@ -1,7 +1,5 @@
-"""
-The code provided includes three classes, Student, Mentor, and Reviewer, along with the methods for each class. It also includes two helper functions, `average_course_grade` and `average_course_lector_rate`, for calculating average grades and rates for a specific course. Below is a detailed description of the classes and their methods:
-
-### Class: Student
+class Student:
+"""### Class: Student
 This class represents a student and contains attributes related to their personal information and academic progress.
 
 **Attributes:**
@@ -18,42 +16,7 @@ This class represents a student and contains attributes related to their persona
 - `avg_grade(self)`: Calculates the average grade of the student across all courses.
 - `__str__(self)`: Returns a string representation of the student's information.
 - `__gt__(self, other)`: Compares the average grade of the current student with another student.
-
-### Class: Mentor
-This class represents a mentor and serves as the base class for other specific types of mentors. It contains attributes and methods common to all mentors.
-
-**Attributes:**
-- `name`: A string representing the mentor's first name.
-- `surname`: A string representing the mentor's last name.
-- `courses_attached`: A list containing the courses that the mentor is associated with.
-
-**Methods:**
-- `__init__(self, name, surname)`: Initializes the Mentor object with the provided name and surname.
-
-### Class: Lecturer
-This class represents a lecturer, which is a type of mentor. It inherits from the Mentor class and includes additional attributes and methods specific to lecturers.
-
-**Attributes:**
-- Inherited attributes from the Mentor class.
-- `rates`: A dictionary that stores the rates provided to the lecturer for different courses.
-
-**Methods:**
-- `__init__(self, name, surname)`: Initializes the Lecturer object with the provided name and surname.
-- `avg_rate(self)`: Calculates the average rate received by the lecturer for all courses.
-- `__str__(self)`: Returns a string representation of the lecturer's information.
-- `__gt__(self, other)`: Compares the average rate of the current lecturer with another lecturer.
-
-### Class: Reviewer
-This class represents a reviewer, which is also a type of mentor. It inherits from the Mentor class and includes additional methods specific to reviewers.
-
-**Methods:**
-- `rate_hw(self, student, course, grade)`: Assigns a grade to a student's homework for a specific course.
-
-### Helper functions:
-- `average_course_grade(students, CourseTitle)`: Calculates the average grade of all students for a specific course.
-- `average_course_lector_rate(lecteurs, CourseTitle)`: Calculates the average rate received by all lecturers for a specific course.
 """
-class Student:
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -83,6 +46,17 @@ class Student:
         return self.avg_grade() > other.avg_grade()
 
 class Mentor:
+"""### Class: Mentor
+This class represents a mentor and serves as the base class for other specific types of mentors. It contains attributes and methods common to all mentors.
+
+**Attributes:**
+- `name`: A string representing the mentor's first name.
+- `surname`: A string representing the mentor's last name.
+- `courses_attached`: A list containing the courses that the mentor is associated with.
+
+**Methods:**
+- `__init__(self, name, surname)`: Initializes the Mentor object with the provided name and surname.
+"""
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
@@ -90,6 +64,19 @@ class Mentor:
 
 
 class Lecturer(Mentor):
+"""### Class: Lecturer
+This class represents a lecturer, which is a type of mentor. It inherits from the Mentor class and includes additional attributes and methods specific to lecturers.
+
+**Attributes:**
+- Inherited attributes from the Mentor class.
+- `rates`: A dictionary that stores the rates provided to the lecturer for different courses.
+
+**Methods:**
+- `__init__(self, name, surname)`: Initializes the Lecturer object with the provided name and surname.
+- `avg_rate(self)`: Calculates the average rate received by the lecturer for all courses.
+- `__str__(self)`: Returns a string representation of the lecturer's information.
+- `__gt__(self, other)`: Compares the average rate of the current lecturer with another lecturer.
+"""
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
@@ -109,6 +96,11 @@ class Lecturer(Mentor):
 
 
 class Reviewer(Mentor):
+"""### Class: Reviewer
+This class represents a reviewer, which is also a type of mentor. It inherits from the Mentor class and includes additional methods specific to reviewers.
+
+**Methods:**
+- `rate_hw(self, student, course, grade)`: Assigns a grade to a student's homework for a specific course."""
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
@@ -121,6 +113,7 @@ class Reviewer(Mentor):
         return f"Имя: {self.name}\nФамилия: {self.surname}"
 
 def average_course_grade(students, CourseTitle):
+"""- `average_course_grade(students, CourseTitle)`: Calculates the average grade of all students for a specific course."""
     gradeSumm = 0
     for student_ in students:
         if CourseTitle in student_.courses_in_progress:
@@ -128,6 +121,7 @@ def average_course_grade(students, CourseTitle):
     return gradeSumm / len(students)
 
 def average_course_lector_rate(lecteurs, CourseTitle):
+"""- `average_course_lector_rate(lecteurs, CourseTitle)`: Calculates the average rate received by all lecturers for a specific course."""
     rateSumm = 0
     for lecteur_ in lecteurs:
         if CourseTitle in lecteur_.courses_attached:
