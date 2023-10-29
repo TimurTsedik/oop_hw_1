@@ -1,6 +1,7 @@
 class Student:
     """### Class: Student
-    This class represents a student and contains attributes related to their personal information and academic progress.
+    This class represents a student and contains attributes related to their personal information
+    and academic progress.
 
     **Attributes:**
     - `name`: A string representing the student's first name.
@@ -47,7 +48,8 @@ class Student:
 
 class Mentor:
     """### Class: Mentor
-    This class represents a mentor and serves as the base class for other specific types of mentors. It contains attributes and methods common to all mentors.
+    This class represents a mentor and serves as the base class for other specific types of mentors.
+    It contains attributes and methods common to all mentors.
 
     **Attributes:**
     - `name`: A string representing the mentor's first name.
@@ -65,7 +67,8 @@ class Mentor:
 
 class Lecturer(Mentor):
     """### Class: Lecturer
-    This class represents a lecturer, which is a type of mentor. It inherits from the Mentor class and includes additional attributes and methods specific to lecturers.
+    This class represents a lecturer, which is a type of mentor. It inherits from the Mentor class and
+    includes additional attributes and methods specific to lecturers.
 
     **Attributes:**
     - Inherited attributes from the Mentor class.
@@ -97,7 +100,8 @@ class Lecturer(Mentor):
 
 class Reviewer(Mentor):
     """### Class: Reviewer
-    This class represents a reviewer, which is also a type of mentor. It inherits from the Mentor class and includes additional methods specific to reviewers.
+    This class represents a reviewer, which is also a type of mentor. It inherits from the Mentor class and
+    includes additional methods specific to reviewers.
 
     **Methods:**
     - `rate_hw(self, student, course, grade)`: Assigns a grade to a student's homework for a specific course."""
@@ -113,7 +117,8 @@ class Reviewer(Mentor):
         return f"Имя: {self.name}\nФамилия: {self.surname}"
 
 def average_course_grade(students, CourseTitle):
-    """- `average_course_grade(students, CourseTitle)`: Calculates the average grade of all students for a specific course."""
+    """- `average_course_grade(students, CourseTitle)`: Calculates the average grade of all students
+    for a specific course."""
     gradeSumm = 0
     for student_ in students:
         if CourseTitle in student_.courses_in_progress:
@@ -121,7 +126,8 @@ def average_course_grade(students, CourseTitle):
     return gradeSumm / len(students)
 
 def average_course_lector_rate(lecteurs, CourseTitle):
-    """- `average_course_lector_rate(lecteurs, CourseTitle)`: Calculates the average rate received by all lecturers for a specific course."""
+    """- `average_course_lector_rate(lecteurs, CourseTitle)`: Calculates the average rate received by
+     all lecturers for a specific course."""
     rateSumm = 0
     for lecteur_ in lecteurs:
         if CourseTitle in lecteur_.courses_attached:
